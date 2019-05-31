@@ -9,7 +9,7 @@ class AppList extends Comment{
     render(){
         return (
             <div className="">
-                <List/>
+                <List list={this.props.list}/>
             </div>
         );
     }

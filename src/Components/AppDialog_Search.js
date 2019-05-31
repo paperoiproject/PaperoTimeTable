@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import Popper from '@material-ui/core/Popper';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 
 const suggestions = [
   { label: 'パン' },
@@ -79,8 +79,7 @@ function getSuggestions(value) {
 function getSuggestionValue(suggestion) {
   return suggestion.label;
 }
-
-const useStyles = theme => ({
+const styles = theme => ({
   root: {
     height: 250,
     flexGrow: 1,
@@ -105,9 +104,8 @@ const useStyles = theme => ({
   divider: {
   },
 });
-
-function IntegrationAutosuggest() {
-  const classes = useStyles();
+const IntegrationAutosuggest = (props) => {
+  const {classes} = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [state, setState] = React.useState({
     single: '',
@@ -125,6 +123,7 @@ function IntegrationAutosuggest() {
   };
 
   const handleChange = name => (event, { newValue }) => {
+    props.onChangeText(newValue);
     setState({
       ...state,
       [name]: newValue,
@@ -139,7 +138,7 @@ function IntegrationAutosuggest() {
     getSuggestionValue,
     renderSuggestion,
   };
-
+  console.log(state.single)
   return (
     <div className={classes.root}>
       <Autosuggest
@@ -166,5 +165,4 @@ function IntegrationAutosuggest() {
     </div>
   );
 }
-
-export default IntegrationAutosuggest;
+export default withStyles(styles)(IntegrationAutosuggest);

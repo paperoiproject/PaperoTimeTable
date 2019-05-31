@@ -39,38 +39,49 @@ const useStyles = makeStyles =>({
   }
 });
 
-function FormDialog() {
-  const [open, setOpen] = React.useState(false);
-  const classes = useStyles();
-
-  
-  function handleClickOpen() {
-    setOpen(true);
-  }
-
-  function handleClose() {
-    setOpen(false);
-  }
-
+const FormDialog = (props) => {
+  const {classes} = props;
+  const [values, setValues] = React.useState({
+    value: 0,
+    open: false,
+  });
+  const handleChange = name => event => {
+    setValues({ ...values, [name]: event.target.value });
+  };
+  const handleFlagOn = () => {
+    setValues({ ...values, open: true});
+  };
+  const handleFlagOff = () => {
+    setValues({ ...values, open: false});
+  };
+  const onChangeText = (s) => {
+    setValues({ ...values, value: s});
+  };
+  console.log(values.value)
   return (
     <div>
-      <Fab color="secondary" onClick={handleClickOpen}>
+      <Fab color="secondary" onClick={handleFlagOn}>
         <AddIcon/>
       </Fab>
       <Dialog
-        open={open} 
-        onClose={handleClose} 
+        open={values.open}
+        onClose={handleFlagOff}
         aria-labelledby="form-dialog-title"
         >
         <DialogTitle id="form-dialog-title">Add</DialogTitle>
         <DialogContent >
-          <Search/>
+          <Search onChangeText={(s) => onChangeText(s)}/>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button
+            onClick={() => {
+              handleFlagOff();
+              props.addList(values.value);
+            }}
+            color="primary">
             Add
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleFlagOff} color="primary">
             Cancel
           </Button>
         </DialogActions>

@@ -4,7 +4,6 @@ import '../App.css';
 import AppMenu from '../AppContainers/AppMenu.js';
 import AppList from '../AppContainers/AppList.js';
 import AppDialog from '../AppContainers/AppDialog.js';
-import AppAddButton from '../AppContainers/AppAddButton.js'
 import AppDrag from '../AppContainers/AppDrag.js'
 
 import Paper from '@material-ui/core/Paper';
@@ -16,6 +15,7 @@ class Home extends Component {
     this.state = {
       flag_addmodal: false,
       target_modal: "no",
+      list: ["1", "2", "3", "4", "5", "6"],
     }
   }
   handleFlagAddmodal(target){
@@ -25,12 +25,21 @@ class Home extends Component {
     })
   }
 
+  addList(s){
+    let cp_list = this.state.list.slice()
+    cp_list.push(s);
+    this.setState({
+      list: cp_list,
+    });
+  }
+
+
   render() {
     return (
       <div className="Home">
         <AppMenu/>
-        <AppList/>
-        <AppDialog/>
+        <AppList list={this.state.list}/>
+        <AppDialog addList={(s) => {this.addList(s)}}/>
       </div>
     );
   }

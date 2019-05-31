@@ -24,12 +24,26 @@ const styles = theme => ({
   },
 });
 
-function generate(element) {
-  return [0,1,2,1,1,1].map(value =>
-    React.cloneElement(element, {
-      key: value,
-    }),
-  );
+function generate(list) {
+  return list.map((value, index) => {
+    return (
+      <ListItem id ={index}>
+        <ListItemAvatar>
+          <Avatar>
+            <FolderIcon/>
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText
+          primary={value}
+        />
+        <ListItemSecondaryAction>
+          <IconButton aria-label="Delete">
+            <DeleteIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+    )
+  });
 }
 
 class InteractiveList extends React.Component {
@@ -40,30 +54,14 @@ class InteractiveList extends React.Component {
     const { classes } = this.props;
 
     return (
-     <div className={classes.root}>      
+     <div className={classes.root}>
           <Grid>
             <Typography variant="h5" className={classes.title}>
               Time Table
             </Typography>
             <div className={classes.demo}>
               <List>
-                {generate(
-                  <ListItem>
-                    <ListItemAvatar>
-                      <Avatar>
-                        <FolderIcon/>
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary="ﾄﾞﾄﾞﾄﾞﾄﾞﾄﾞﾄﾞﾄﾞﾄﾞﾄﾞﾄﾞ"
-                    />
-                    <ListItemSecondaryAction>
-                      <IconButton aria-label="Delete">
-                        <DeleteIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>,
-                )}
+                {generate(this.props.list)}
                </List>
              </div>
          </Grid>

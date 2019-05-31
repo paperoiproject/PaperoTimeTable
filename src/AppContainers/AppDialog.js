@@ -9,7 +9,7 @@ class AppDialog extends Comment{
     render(){
         return (
             <div className="">
-                <Dialog/>
+                <Dialog addList={(s) => {this.props.addList(s)}}/>
             </div>
         );
     }
