@@ -11,7 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import Search from './AppDialog_Search.js'
+import Search from './Search_Dialog.js'
 import '../App.css';
 
 const useStyles = makeStyles =>({

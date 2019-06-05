@@ -1,6 +1,6 @@
 import React from 'react';
 
-import List from '../Components/AppList_List';
+import List from '../Components/List_AppList.js';
 
 class AppList extends Comment{
     constructor(props){

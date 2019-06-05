@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tab from '../Components/AppMenu_Menu.js';
+import Tab from '../Components/Menu_AppMenu.js';
 
 class AppTab extends Comment{
     constructor(props){

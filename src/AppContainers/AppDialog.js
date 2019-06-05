@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Dialog from '../Components/AppDialog_Dialog.js';
+import Dialog from '../Components/Dialog_AppDialog.js';
 
 class AppDialog extends Comment{
     constructor(props){
