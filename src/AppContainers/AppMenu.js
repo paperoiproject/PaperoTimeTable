@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tab from '../Components/Menu_AppMenu.js';
+import Menu from '../Components/Menu_AppMenu.js';
 
 class AppTab extends Comment{
     constructor(props){
@@ -9,10 +9,10 @@ class AppTab extends Comment{
     render(){
         return (
             <div className="">
-                <Tab />
+                <Menu />
             </div>
         );
     }
 }
 
-export default Tab;
+export default Menu;
