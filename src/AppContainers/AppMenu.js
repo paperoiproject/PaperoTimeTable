@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Menu from '../Components/Menu_AppMenu.js';
+import Menu from '../Components/Menu.js';
 
 class AppMenu extends React.Component{
     constructor(props){

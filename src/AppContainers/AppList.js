@@ -1,6 +1,6 @@
 import React from 'react';
 
-import List from '../Components/List_AppList.js';
+import List from '../Components/List.js'
 
 class AppList extends React.Component{
     constructor(props){
