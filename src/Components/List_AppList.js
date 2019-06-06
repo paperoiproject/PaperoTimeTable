@@ -14,7 +14,6 @@ import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import { Container, Draggable } from 'react-smooth-dnd';
-import { applyDrag, generateItems } from './utils';
 
 const styles = theme => ({
   root: {

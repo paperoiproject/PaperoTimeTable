@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Menu from '../Components/AppMenu_Menu.js';
+import Menu from '../Components/Menu_AppMenu.js';
 
 class AppMenu extends React.Component{
     constructor(props){
@@ -9,7 +9,7 @@ class AppMenu extends React.Component{
     render(){
         return (
             <div>
-                <Menu />
+                <Menu/>
             </div>
         );
     }
