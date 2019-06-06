@@ -13,7 +13,6 @@ import Typography from '@material-ui/core/Typography';
 import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import { Container, Draggable } from 'react-smooth-dnd';
 
 const styles = theme => ({
   root: {
@@ -23,8 +22,28 @@ const styles = theme => ({
   },
 });
 
-function generate(list) {
-  return list.map((value, index) => {
+/*
+const Generate = (props) =>{
+  const {classes} = props;
+  const [values, setValues] = React.useState({
+    value: 0,
+    open: false,
+  });
+  const handleFlagOn = ()=>{
+    setValues({...values, open: true});
+  };
+
+  const handleFlagOff = () => {
+    setValues({...values, open: false});
+  };
+
+  const onChangeText = (s) => {
+    setValues({...values, value: s});
+  };
+  console.log(values.value);
+  
+
+  return props.map((value, index) => {
     return (
       <ListItem id ={index}>
         <ListItemAvatar>
@@ -36,7 +55,12 @@ function generate(list) {
           primary={value}
         />
         <ListItemSecondaryAction>
-          <IconButton aria-label="Delete">
+          <IconButton
+            onClick={() => {
+              handleFlagOff();
+              props.deleteList(value.value);
+            }} 
+            >
             <DeleteIcon />
           </IconButton>
         </ListItemSecondaryAction>
@@ -44,13 +68,28 @@ function generate(list) {
     )
   });
 }
+*/
 
-class InteractiveList extends React.Component {
-  state = {
+const InteractiveList = (props) => {
+  const {classes} = props;
+  const [values, setValues] = React.useState({
+    value: 0,
+    open: false,
+  });
+  const handleFlagOn = ()=>{
+    setValues({...values, open: true});
   };
 
-  render() {
-    const { classes } = this.props;
+  const handleFlagOff = () => {
+    setValues({...values, open: false});
+  };
+
+  const onChangeText = (s) => {
+    setValues({...values, value: s});
+  };
+  console.log(values.value);
+
+
 
     return (
      <div className={classes.root}>
@@ -60,13 +99,31 @@ class InteractiveList extends React.Component {
             </Typography>
             <div className={classes.demo}>
               <List>
-                {generate(this.props.list)}
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>
+                           <FolderIcon/>
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText
+                     primary={values}
+                    />
+                    <ListItemSecondaryAction>
+                      <IconButton
+                        onClick={() => {
+                          handleFlagOff();
+                          props.deleteList(values.value);
+                        }} 
+                        >
+                        <DeleteIcon />
+                      </IconButton>
+                    </ListItemSecondaryAction>
+                  </ListItem>
                </List>
              </div>
          </Grid>
        </div>
      );
-   }
 }
 
 InteractiveList.propTypes = {
