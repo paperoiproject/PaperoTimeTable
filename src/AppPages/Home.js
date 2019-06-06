@@ -4,12 +4,10 @@ import '../App.css';
 import AppMenu from '../AppContainers/AppMenu.js';
 import AppList from '../AppContainers/AppList.js';
 import AppDialog from '../AppContainers/AppDialog.js';
-import AppDrag from '../AppContainers/AppDrag.js'
-
-import Paper from '@material-ui/core/Paper';
 
 
-class Home extends Component {
+
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

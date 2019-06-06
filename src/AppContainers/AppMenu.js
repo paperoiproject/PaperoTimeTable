@@ -1,18 +1,18 @@
 import React from 'react';
 
-import Tab from '../Components/AppMenu_Menu.js';
+import Menu from '../Components/AppMenu_Menu.js';
 
-class AppTab extends Comment{
+class AppMenu extends React.Component{
     constructor(props){
         super(props);
     }
     render(){
         return (
-            <div className="">
-                <Tab />
+            <div>
+                <Menu />
             </div>
         );
     }
 }
 
-export default Tab;
+export default AppMenu;

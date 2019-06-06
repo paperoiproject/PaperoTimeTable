@@ -2,17 +2,17 @@ import React from 'react';
 
 import List from '../Components/AppList_List';
 
-class AppList extends Comment{
+class AppList extends React.Component{
     constructor(props){
         super(props);
     }
     render(){
         return (
-            <div className="">
+            <div>
                 <List list={this.props.list}/>
             </div>
         );
     }
 }
 
-export default List;
+export default AppList;
